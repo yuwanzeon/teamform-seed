@@ -59,9 +59,14 @@ $scope.processData=function(allData, currentEventID, currentTeamID, currentUserI
 
     };
 
-    allData.$loaded().then(function(data){
+    $scope.checkLoaded = function(){
+            allData.$loaded().then(function(data){
         $scope.preprocessData(data);
     });
+    };
+
+    $scope.checkLoaded();
+
 
     $scope.preprocessData=function(allData){
         for (var i in allData.users[$scope.currentUser].teamsAsMember){
